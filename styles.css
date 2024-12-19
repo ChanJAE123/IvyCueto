@@ -1,0 +1,530 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    color: #fff;
+    background: linear-gradient(135deg, #1f1f1f, #2c2c2c); /* Neon gray background */
+    overflow: hidden; /* Prevent scrolling */
+    background-size: 150% 150%; /* Adjust background size for more visible waves */
+    animation: gradientAnimation 8s ease infinite; /* Adjust animation speed */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* New keyframes for enhanced animations */
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes cough {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #1f1f1f, #2c2c2c); /* Ensure particles container has the same background */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: bounceIn 1s ease; /* Add bounce-in animation */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(18, 18, 18, 0.8); /* Dark mode header */
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    animation: fadeInUp 1s ease; /* Add fade-in animation */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #00ffcc; /* Neon color */
+    text-shadow: 0 0 10px #00ffcc; /* Neon effect */
+     /* Add pulse animation */
+}
+
+nav {
+    position: relative;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: rgba(18, 18, 18, 0.8);
+    color: #fff;
+    padding: 10px 32px;
+    font-size: 16px;
+    font-weight: bold; /* Add weight to the text */
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s; /* Change transition to color */
+}
+
+.dropbtn:hover {
+    color: #00ffcc; /* Neon hover effect */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(18, 18, 18, 0.9);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    flex-direction: column; /* Display links vertically */
+    top: 100%; /* Position below the button */
+    left: 0; /* Align to the left of the button */
+    opacity: 0; /* Start hidden */
+    transform: translateY(-10px); /* Start slightly above */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth effect */
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s; /* Change transition to color */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-content a:hover {
+    color: #00ffcc; /* Neon hover effect */
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex; /* Show dropdown content on hover */
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative; /* Required for the hover effect */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Dark mode text */
+    font-weight: bold;
+    transition: color 0.3s, transform 0.1s; /* Add transition for transform */
+    position: relative; /* Required for the hover effect */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #00ffcc; /* Neon color */
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #00ffcc; /* Neon hover effect */
+}
+
+nav ul li a:active {
+    transform: translateY(2px); /* Slight push down effect */
+}
+
+section {
+    flex: 1;
+    display: none; /* Hide all sections by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; /* Add padding to prevent overlap */
+    box-sizing: border-box;
+    margin-top: 40px; /* Adjust space for fixed header */
+    text-align: center; /* Center text */
+    animation: fadeInUp 0.5s ease; /* Add fade-in animation */
+}
+
+section.active {
+    display: flex; /* Show active section */
+    animation: fadeInUp 0.5s ease; /* Add fade-in animation */
+}
+
+section.inactive {
+    display: none; /* Hide inactive sections */
+}
+
+#about, #sdg, #projects, #skills, #contact {
+    display: flex; /* Show the section by default */
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px; /* Add padding to prevent overlap */
+    margin-top: 10px; /* Adjust space for proper alignment */
+    justify-content: center; /* Center contents vertically */
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Make profile picture circular */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounceIn 1s ease; /* Add bounce-in animation */
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px; /* Make footer height shorter */
+    border-top: 1px solid #333; /* Dark mode footer */
+    background-color: rgba(18, 18, 18, 0.8);
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+    animation: fadeInUp 1s ease; /* Add fade-in animation */
+}
+
+.social-icons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increase gap between icons */
+    animation: pulse 2s infinite;
+}
+
+.social-icons a {
+    color: #fff; /* Dark mode icon color */
+    font-size: 32px; /* Enlarge icons */
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.3s; /* Add transform transition */
+}
+
+social-icons a:hover {
+    color: #00ffcc; /* Neon hover effect */
+    text-shadow: 0 0 10px #00ffcc; /* Neon effect */
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Enhance hover effect for section links */
+section h2 {
+    font-size: 2.5rem; /* Increase font size */
+    color: #fff;
+    margin-bottom: 20px; /* Add space below heading */
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 800px; /* Limit the width of paragraphs */
+    line-height: 1.6; /* Improve readability */
+    margin-bottom: 20px; /* Add space below paragraphs */
+}
+
+.project h3 {
+    font-size: 1.8rem; /* Increase font size */
+    color: #fff;
+    margin-bottom: 10px; /* Add space below project titles */
+}
+
+.project p {
+    font-size: 1rem;
+    color: #ccc;
+    max-width: 600px; /* Limit the width of project descriptions */
+    line-height: 1.6; /* Improve readability */
+    margin-bottom: 10px; /* Add space below project descriptions */
+}
+
+/* Styles for Skills section */
+#skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+#skills ul li {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#skills ul li:hover {
+    background-color: #00ffcc; /* Neon hover effect */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Highlight full name in About Me section */
+.highlight-name {
+    font-size: 1.5rem; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    color: #00ffcc; /* Neon color */
+    text-shadow: 0 0 10px #00ffcc; /* Neon effect */
+    padding: 5px 10px; /* Add padding */
+    border-radius: 5px; /* Rounded corners */
+    display: inline-block; /* Ensure it doesn't break the line */
+}
+
+/* Styles for coughing Earth image */
+.coughing-earth {
+    position: absolute;
+    top: 100px; /* Move downward */
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    transform: scaleX(-1); /* Flip the image horizontally */
+    animation: cough 2s infinite; /* Add cough animation */
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .dropbtn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    section h2 {
+        font-size: 2.2rem;
+    }
+    section p {
+        font-size: 1.1rem;
+    }
+    .project h3 {
+        font-size: 1.6rem;
+    }
+    .project p {
+        font-size: 0.9rem;
+    }
+    .social-icons a {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    .dropbtn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    section h2 {
+        font-size: 2rem;
+    }
+    section p {
+        font-size: 1rem;
+    }
+    .project h3 {
+        font-size: 1.4rem;
+    }
+    .project p {
+        font-size: 0.8rem;
+    }
+    .social-icons a {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .dropbtn {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+    section h2 {
+        font-size: 1.8rem;
+    }
+    section p {
+        font-size: 0.9rem;
+    }
+    .project h3 {
+        font-size: 1.2rem;
+    }
+    .project p {
+        font-size: 0.7rem;
+    }
+    .social-icons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .social-icons a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    .dropbtn {
+        padding: 4px 8px;
+        font-size: 8px;
+    }
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+    }
+    section h2 {
+        font-size: 1.6rem;
+    }
+    section p {
+        font-size: 0.8rem;
+    }
+    .project h3 {
+        font-size: 1rem;
+    }
+    .project p {
+        font-size: 0.6rem;
+    }
+    .social-icons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .social-icons a {
+        font-size: 16px;
+    }
+}
