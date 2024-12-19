@@ -314,7 +314,7 @@ footer {
     transition: color 0.3s, text-shadow 0.3s, transform 0.3s; /* Add transform transition */
 }
 
-social-icons a:hover {
+.social-icons a:hover {
     color: #00ffcc; /* Neon hover effect */
     text-shadow: 0 0 10px #00ffcc; /* Neon effect */
     transform: scale(1.2); /* Slightly enlarge on hover */
